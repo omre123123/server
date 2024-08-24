@@ -16,6 +16,9 @@ const userSchema = new Schema({
   pass: {
     type: String,
     required: true,
+  },
+  cart:{
+    type:Array
   }
 });
 const USER_MODEL = model("user", userSchema);
