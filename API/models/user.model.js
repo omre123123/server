@@ -8,7 +8,6 @@ const userSchema = new Schema({
     unique:true,
   },
   name: String,
-  age: Number,
   phone: {
     type: String,
     required: true,
@@ -17,9 +16,11 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-  cart:{
-    type:Array
-  }
+  email: {
+    type: String,
+    required: true,
+  },
+  cart:[]
 });
 const USER_MODEL = model("user", userSchema);
 
