@@ -12,10 +12,14 @@ const createuser = async (req, res) => {
       });
     }
 
+    // Trim email to remove any unwanted spaces
+    const trimmedEmail = email.trim();
+
+    // Create user
     const user = await USER_MODEL.create({
       name,
       phone,
-      email,
+      email: trimmedEmail,
       pass,
     });
 
@@ -178,7 +182,10 @@ const login = async (req, res) => {
       });
     }
 
-    const user = await USER_MODEL.findOne({ email, pass });
+    // Trim email to remove any unwanted spaces
+    const trimmedEmail = email.trim();
+
+    const user = await USER_MODEL.findOne({ email: trimmedEmail, pass });
 
     res.status(200).json({
       user,
