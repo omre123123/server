@@ -1,6 +1,4 @@
 const { Schema, model } = require("mongoose");
-const bcrypt = require("bcrypt");
-const validator = require("validator");
 
 const userSchema = new Schema({
   name: {
@@ -23,7 +21,6 @@ const userSchema = new Schema({
     required: true,
     unique: true,
     trim: true,
-    validate: [validator.isEmail, 'Invalid email address'], // Validate email format
   },
   cart: {
     type: [Schema.Types.Mixed], // Using Schema.Types.Mixed to allow diverse data types
