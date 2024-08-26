@@ -2,15 +2,11 @@
 const { Schema, model } = require("mongoose");
 
 const userSchema = new Schema({
-  id:{
-    type: String,
-    required: true,
-    unique:true,
-  },
   name: String,
   phone: {
     type: String,
     required: true,
+    unique:true
   },
   pass: {
     type: String,
@@ -20,7 +16,10 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-  cart:[]
+  cart:{
+    type:Array,
+    default:[]
+  }
 });
 const USER_MODEL = model("user", userSchema);
 

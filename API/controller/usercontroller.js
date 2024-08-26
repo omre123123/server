@@ -3,14 +3,9 @@ const USER_MODEL = require("../models/user.model");
 // app.post("/createuser", 
 const createuser = async (req, res) => {
     try {
-      const { name, age, pass, phone,id,email } = req.body;
+      const { name, phone, email,pass } = req.body;
       const user = await USER_MODEL.create({
-        id,
-        name,
-        age,
-        pass,
-        phone,
-        email
+        name, phone, email,pass 
       });
   
       res.status(200).json({
