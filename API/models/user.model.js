@@ -1,6 +1,4 @@
 const { Schema, model } = require("mongoose");
-const bcrypt = require("bcrypt");
-const validator = require("validator");
 
 const userSchema = new Schema({
   name: {
