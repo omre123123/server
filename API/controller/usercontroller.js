@@ -143,7 +143,7 @@ const deleteone = async (req, res) => {
 // Update a user by phone number
 const updateone = async (req, res) => {
   try {
-    const { email, pass,name,phone } = req.body;
+    const { email, pass,name } = req.body;
 
     if (!email || !pass) {
       return res.status(400).json({
@@ -155,7 +155,6 @@ const updateone = async (req, res) => {
     const user = await USER_MODEL.findOneAndUpdate(
       { email },
       { pass },
-      {phone},
       {name},
       { new: true, runValidators: true }
     );
