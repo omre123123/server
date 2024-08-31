@@ -143,21 +143,27 @@ const deleteone = async (req, res) => {
 // Update a user by phone number
 const updateone = async (req, res) => {
   try {
-    const { email, pass,name } = req.body;
+    const { email, pass, name } = req.body;
 
     if (!email || !pass) {
       return res.status(400).json({
         error: true,
-        errormessage: "Phone number and new password are required.",
+        errormessage: "Email and password are required.",
       });
     }
 
     const user = await USER_MODEL.findOneAndUpdate(
       { email },
-      { pass },
-      {name},
+      { pass, name },
       { new: true, runValidators: true }
     );
+
+    if (!user) {
+      return res.status(404).json({
+        error: true,
+        errormessage: "User not found.",
+      });
+    }
 
     res.status(200).json({
       user,
