@@ -143,9 +143,9 @@ const deleteone = async (req, res) => {
 // Update a user by phone number
 const updateone = async (req, res) => {
   try {
-    const { phone, pass } = req.body;
+    const { email, pass,name,phone } = req.body;
 
-    if (!phone || !pass) {
+    if (!email || !pass) {
       return res.status(400).json({
         error: true,
         errormessage: "Phone number and new password are required.",
@@ -153,8 +153,10 @@ const updateone = async (req, res) => {
     }
 
     const user = await USER_MODEL.findOneAndUpdate(
-      { phone },
+      { email },
       { pass },
+      {phone},
+      {name},
       { new: true, runValidators: true }
     );
 
